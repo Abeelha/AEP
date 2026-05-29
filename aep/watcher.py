@@ -23,10 +23,10 @@ class _Handler(FileSystemEventHandler):
             meta = pipeline.process(path, self.out_dir, self.n)
             memory.log_batch(meta, ts=int(time.time()))
             memory.rebuild_digest()
-            print(f"[autotrip] {os.path.basename(path)} -> {len(meta['variants'])} variants "
+            print(f"[AEP] {os.path.basename(path)} -> {len(meta['variants'])} variants "
                   f"({meta['scene']['scene']})  {meta['dest']}")
         except Exception as e:
-            print(f"[autotrip] FAILED {path}: {e}")
+            print(f"[AEP] FAILED {path}: {e}")
 
     def on_created(self, event):
         if not event.is_directory:
@@ -41,7 +41,7 @@ def watch(in_dir, out_dir, n=5):
     os.makedirs(in_dir, exist_ok=True); os.makedirs(out_dir, exist_ok=True)
     h = _Handler(out_dir, n)
     obs = Observer(); obs.schedule(h, in_dir, recursive=False); obs.start()
-    print(f"[autotrip] watching {in_dir}  (drop images here; Ctrl+C to stop)")
+    print(f"[AEP] watching {in_dir}  (drop images here; Ctrl+C to stop)")
     try:
         while True:
             time.sleep(1)

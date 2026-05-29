@@ -53,7 +53,7 @@ def rebuild_digest():
             score[e["label"]] += e["score"]
             votes[e["label"]] += 1
     ranked = sorted(score.items(), key=lambda kv: kv[1], reverse=True)
-    lines = ["# autotrip — preference memory", "",
+    lines = ["# AEP — preference memory", "",
              f"Total variants produced: {sum(produced.values())}  |  rated: {sum(votes.values())}", "",
              "## Recipe ranking (by net score)", ""]
     if ranked:
@@ -62,7 +62,7 @@ def rebuild_digest():
             tag = "✅ keep" if s > 0 else ("❌ drop" if s < 0 else "· neutral")
             lines.append(f"- **{label}**: net {s:+d} over {v} votes (avg {avg:+.2f}) — {tag}")
     else:
-        lines.append("_No ratings yet. Rate variants with `python -m autotrip rate <label> <+1|-1>`._")
+        lines.append("_No ratings yet. Rate variants with `python -m aep rate <label> <+1|-1>`._")
     lines += ["", "## Most-produced recipes", ""]
     for label, c in sorted(produced.items(), key=lambda kv: kv[1], reverse=True)[:10]:
         lines.append(f"- {label}: {c}")

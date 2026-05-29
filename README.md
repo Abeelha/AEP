@@ -1,9 +1,9 @@
-# autotrip
+# AEP — auto-edit-pictures
 
-Scene-aware automatic **trippy photo editor**. Drop an image in a folder → it
-detects whether the shot is a *person* or an *environment*, then auto-generates
-several edited variants (real pixel edits — no AI image generation) so you can
-pick the best. It learns which looks you prefer over time.
+Scene-aware automatic **photo editor**. Drop an image in a folder → it detects
+whether the shot is a *person* or an *environment*, then auto-generates several
+edited variants (real pixel edits — no AI image generation) so you can pick the
+best. It learns which looks you prefer over time.
 
 > Built for a dark lo-fi / nightlife aesthetic: crushed shadows, protected
 > highlights, warm-neon-vs-cool-ambient split tone, grain, vignette, halftone.
@@ -38,17 +38,17 @@ pip install -r requirements.txt
 
 ```bash
 # process everything already in ./input
-python -m autotrip once
+python -m aep once
 
 # watch the folder and auto-edit new drops
-python -m autotrip watch
+python -m aep watch
 
 # one file
-python -m autotrip one path/to/photo.jpg -n 5
+python -m aep one path/to/photo.jpg -n 5
 
 # rate a recipe so the memory learns your taste
-python -m autotrip rate gabriel_night +1
-python -m autotrip memory
+python -m aep rate gabriel_night +1
+python -m aep memory
 ```
 
 Backdrop assets download from [Lorem Picsum](https://picsum.photos) (free, no

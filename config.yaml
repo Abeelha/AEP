@@ -1,4 +1,4 @@
-# autotrip config
+# AEP (auto-edit-pictures) config
 variants: 5                 # how many edited versions per image
 
 assets:

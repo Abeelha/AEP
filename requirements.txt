@@ -8,5 +8,5 @@ PyYAML>=6.0             # config
 
 # optional (better subject cutout) — install if you want real matting:
 #   pip install rembg onnxruntime
-# rembg downloads a ~170MB U2Net model on first use. Without it, autotrip
+# rembg downloads a ~170MB U2Net model on first use. Without it, AEP
 # falls back to a radial face-centered mask (still good for blur/vignette).

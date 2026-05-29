@@ -1,10 +1,10 @@
-"""autotrip CLI.
+"""AEP (auto-edit-pictures) CLI.
 
-    python -m autotrip once  [--input DIR] [--out DIR] [-n N]   # process existing images
-    python -m autotrip watch [--input DIR] [--out DIR] [-n N]   # live folder watch
-    python -m autotrip one   IMAGE [--out DIR] [-n N]           # single image
-    python -m autotrip rate  LABEL +1|-1 [--note TEXT]          # rate a recipe
-    python -m autotrip memory                                   # print preference digest
+    python -m aep once  [--input DIR] [--out DIR] [-n N]   # process existing images
+    python -m aep watch [--input DIR] [--out DIR] [-n N]   # live folder watch
+    python -m aep one   IMAGE [--out DIR] [-n N]           # single image
+    python -m aep rate  LABEL +1|-1 [--note TEXT]          # rate a recipe
+    python -m aep memory                                   # print preference digest
 """
 import os
 import sys
@@ -27,7 +27,7 @@ def _images(d):
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(prog="autotrip")
+    p = argparse.ArgumentParser(prog="aep")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     for name in ("once", "watch"):
@@ -69,7 +69,11 @@ def main(argv=None):
 
     elif a.cmd == "memory":
         memory.rebuild_digest()
-        print(open(memory.DIGEST, encoding="utf-8").read())
+        data = open(memory.DIGEST, encoding="utf-8").read()
+        try:
+            sys.stdout.write(data + "\n")
+        except UnicodeEncodeError:  # Windows cp1252 console can't encode emoji
+            sys.stdout.buffer.write((data + "\n").encode("utf-8", "replace"))
 
 
 if __name__ == "__main__":

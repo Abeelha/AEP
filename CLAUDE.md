@@ -1,4 +1,4 @@
-# autotrip — project context for Claude Code
+# AEP (auto-edit-pictures) — project context for Claude Code
 
 > Open Claude Code **in this folder** to continue the project here (not the
 > Desktop session). This file auto-loads as context. Caveman mode is the user's
@@ -6,15 +6,17 @@
 
 ## What this is
 
-Scene-aware automatic **trippy photo editor**. Real pixel edits (numpy/Pillow),
+Scene-aware automatic **photo editor**. Real pixel edits (numpy/Pillow),
 **not** AI image generation. Drop a photo → detect person vs environment →
 auto-produce N edited variants + a contact sheet → user rates them → a
 preference memory learns which recipes trend better/worse.
 
+(Originally prototyped under the name "autotrip"; renamed to AEP.)
+
 ## Architecture
 
 ```
-autotrip/
+aep/
   effects.py      17 pixel effects + named PRESETS (style recipes)
   detect.py       face detection (OpenCV Haar) + optional rembg subject matte
   generators.py   procedural backdrops (gradient/swirl/lines/hue) — math, license-free
@@ -23,18 +25,18 @@ autotrip/
   pipeline.py     orchestrator: image -> analyze -> scene recipes -> variants + sheet
   memory.py       ratings.jsonl event log -> MEMORY.md digest (preference learning)
   watcher.py      watchdog folder watch -> auto-edit new drops
-  cli.py          `python -m autotrip {once|watch|one|rate|memory}`
+  cli.py          `python -m aep {once|watch|one|rate|memory}`
 ```
 
 ## Run
 
 ```bash
 pip install -r requirements.txt          # core; optional: pip install rembg onnxruntime
-python -m autotrip once                   # process ./input
-python -m autotrip watch                  # live auto-edit on new drops
-python -m autotrip one photo.jpg -n 5
-python -m autotrip rate gabriel_night +1
-python -m autotrip memory
+python -m aep once                        # process ./input
+python -m aep watch                       # live auto-edit on new drops
+python -m aep one photo.jpg -n 5
+python -m aep rate gabriel_night +1
+python -m aep memory
 ```
 
 ## The user's edit style (drives the presets)
@@ -63,8 +65,7 @@ each), contact sheets, rating + memory digest. Known-good on test images.
 
 ## Next steps / backlog
 
-- Retune `gabriel_duotone` palette (was slightly off toward gold earlier — now
-  uses violet gradmap; verify on more samples).
+- Retune `gabriel_duotone` palette (verify on more samples).
 - Optional: enable `rembg` for true subject cutout (cleaner background replace).
 - `samples/` currently empty — add a couple CC0/Picsum demo images (no faces)
   so the public repo has a runnable example without user photos.

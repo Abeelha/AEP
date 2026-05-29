@@ -1,11 +1,13 @@
 # Session handoff log
 
 ## Origin
-This project was bootstrapped from a general "Desktop" Claude Code session on
-2026-05-29. From here on, **work on autotrip in this folder** so the Desktop
-session stays for general work only. Open Claude Code in
-`C:\Users\Abeelha\Documents\GitHub\autotrip` — `CLAUDE.md` loads the full
-project context automatically.
+This project (AEP — auto-edit-pictures) was bootstrapped from a general
+"Desktop" Claude Code session on 2026-05-29. From here on, **work on AEP in this
+folder** so the Desktop session stays for general work only. Open Claude Code in
+`C:\Users\Abeelha\Documents\GitHub\AEP` — `CLAUDE.md` loads the full project
+context automatically.
+
+(Originally prototyped as "autotrip"; renamed to AEP.)
 
 ## How the project came to be (intent)
 User wanted an AI-assisted **auto photo editor** (real edits, not generation)
