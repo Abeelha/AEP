@@ -1,0 +1,8 @@
+# autotrip config
+variants: 5                 # how many edited versions per image
+
+assets:
+  use_pexels: false        # true + set PEXELS_API_KEY env var for query-driven backdrops
+  # pexels_key: ""          # or hardcode here (NOT recommended for a public repo)
+
+# input/output dirs are ./input and ./output by default (both git-ignored).

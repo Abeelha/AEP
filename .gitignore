@@ -1,0 +1,38 @@
+# --- personal media: NEVER commit user input/output images ---
+input/**
+output/**
+assets/cache/**
+!input/.gitkeep
+!output/.gitkeep
+!assets/cache/.gitkeep
+
+# user images anywhere by extension (safety net)
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.heic
+*.bmp
+*.tiff
+# ...except curated, license-safe demo assets
+!samples/**
+!docs/**
+
+# ML model weights (downloaded at runtime)
+models/**
+*.onnx
+*.pth
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# os
+Thumbs.db
+.DS_Store
+
+# ratings db is local-only history
+memory/ratings.jsonl

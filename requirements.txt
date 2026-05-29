@@ -1,0 +1,12 @@
+# core (required)
+numpy>=1.24
+Pillow>=10.0
+opencv-python>=4.8      # bundled Haar cascades for face detection
+watchdog>=3.0           # folder watching
+requests>=2.31          # asset download
+PyYAML>=6.0             # config
+
+# optional (better subject cutout) — install if you want real matting:
+#   pip install rembg onnxruntime
+# rembg downloads a ~170MB U2Net model on first use. Without it, autotrip
+# falls back to a radial face-centered mask (still good for blur/vignette).
